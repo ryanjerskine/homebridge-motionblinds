@@ -71,7 +71,7 @@ export class MotionBlindsAccessory {
       this.service
         .getCharacteristic(this.platform.Characteristic.TargetPosition)
         .on('get', (callback) => {
-          this.platform.log.debug(`getting target position, accessory=${JSON.stringify(this.accessory)}`)
+          this.platform.log.debug(`getting target position, context=${JSON.stringify(this.accessory.context)}`)
           callback(null, this.accessory.context.targetPosition)
         })
         .on('set', (value, callback) => {
