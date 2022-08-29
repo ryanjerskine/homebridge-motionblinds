@@ -72,7 +72,7 @@ export class MotionBlindsAccessory {
         .getCharacteristic(this.platform.Characteristic.TargetPosition)
         .on('get', (callback) => {
           this.platform.log.debug(`getting target position, context=${JSON.stringify(this.accessory.context)}`)
-          callback(null, this.accessory.context.targetPosition)
+          callback(null, this.accessory.context.targetPosition ?? this.accessory.context.status?.currentPosition)
         })
         .on('set', (value, callback) => {
           const targetPosition = value as number
